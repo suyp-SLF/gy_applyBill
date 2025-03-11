@@ -1,0 +1,86 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DocService WSDL service -->
+
+  <service name="DocServiceHttpPort" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://localhost/services/DocService"/>
+      <parameter name="wsdlServiceElement" value="DocService"/>
+      <parameter name="schemaQualified" value="http://localhost/services/DocService,http://webservices.docs.weaver"/>
+      <parameter name="wsdlServicePort" value="DocServiceHttpPort"/>
+      <parameter name="className" value="kd.cus.wb.Client.DocServiceHttpBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="DocServicePortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+
+      <typeMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:DocAttachment"
+        type="java:kd.cus.wb.Client.DocAttachment"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:ArrayOfDocInfo"
+        type="java:kd.cus.wb.Client.DocInfo[]"
+        innerType="cmp-ns:DocInfo" xmlns:cmp-ns="http://webservices.docs.weaver"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://localhost/services/DocService"
+        qname="ns:ArrayOfInt"
+        type="java:int[]"
+        innerType="cmp-ns:int" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:ArrayOfDocCustomField"
+        type="java:kd.cus.wb.Client.DocCustomField[]"
+        innerType="cmp-ns:DocCustomField" xmlns:cmp-ns="http://webservices.docs.weaver"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:DocInfo"
+        type="java:kd.cus.wb.Client.DocInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://localhost/services/DocService"
+        qname="ns:ArrayOfString"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:ArrayOfDocAttachment"
+        type="java:kd.cus.wb.Client.DocAttachment[]"
+        innerType="cmp-ns:DocAttachment" xmlns:cmp-ns="http://webservices.docs.weaver"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.docs.weaver"
+        qname="ns:DocCustomField"
+        type="java:kd.cus.wb.Client.DocCustomField"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

@@ -1,0 +1,177 @@
+/**
+ * DocServiceHttpBindingSkeleton.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package kd.cus.wb.Client;
+
+public class DocServiceHttpBindingSkeleton implements kd.cus.wb.Client.DocServicePortType, org.apache.axis.wsdl.Skeleton {
+    private kd.cus.wb.Client.DocServicePortType impl;
+    private static java.util.Map _myOperations = new java.util.Hashtable();
+    private static java.util.Collection _myOperationsList = new java.util.ArrayList();
+
+    /**
+    * Returns List of OperationDesc objects with this name
+    */
+    public static java.util.List getOperationDescByName(java.lang.String methodName) {
+        return (java.util.List)_myOperations.get(methodName);
+    }
+
+    /**
+    * Returns Collection of OperationDescs
+    */
+    public static java.util.Collection getOperationDescs() {
+        return _myOperationsList;
+    }
+
+    static {
+        org.apache.axis.description.OperationDesc _oper;
+        org.apache.axis.description.FaultDesc _fault;
+        org.apache.axis.description.ParameterDesc [] _params;
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("deleteDoc", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "deleteDoc"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.deleteDoc");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("deleteDoc") == null) {
+            _myOperations.put("deleteDoc", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("deleteDoc")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservices.docs.weaver", "DocInfo"), kd.cus.wb.Client.DocInfo.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("createDoc", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "createDoc"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.createDoc");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("createDoc") == null) {
+            _myOperations.put("createDoc", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("createDoc")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("getList", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://webservices.docs.weaver", "ArrayOfDocInfo"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "getList"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.getList");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("getList") == null) {
+            _myOperations.put("getList", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("getList")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("getDoc", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://webservices.docs.weaver", "DocInfo"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "getDoc"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.getDoc");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("getDoc") == null) {
+            _myOperations.put("getDoc", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("getDoc")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("getDocCount", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "getDocCount"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.getDocCount");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("getDocCount") == null) {
+            _myOperations.put("getDocCount", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("getDocCount")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in3"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("login", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "login"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.login");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("login") == null) {
+            _myOperations.put("login", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("login")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservices.docs.weaver", "DocInfo"), kd.cus.wb.Client.DocInfo.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://localhost/services/DocService", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("updateDoc", _params, new javax.xml.namespace.QName("http://localhost/services/DocService", "out"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://localhost/services/DocService", "updateDoc"));
+        _oper.setSoapAction("urn:weaver.docs.webservices.DocService.updateDoc");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("updateDoc") == null) {
+            _myOperations.put("updateDoc", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("updateDoc")).add(_oper);
+    }
+
+    public DocServiceHttpBindingSkeleton() {
+        this.impl = new kd.cus.wb.Client.DocServiceHttpBindingImpl();
+    }
+
+    public DocServiceHttpBindingSkeleton(kd.cus.wb.Client.DocServicePortType impl) {
+        this.impl = impl;
+    }
+    public int deleteDoc(int in0, java.lang.String in1) throws java.rmi.RemoteException
+    {
+        int ret = impl.deleteDoc(in0, in1);
+        return ret;
+    }
+
+    public int createDoc(kd.cus.wb.Client.DocInfo in0, java.lang.String in1) throws java.rmi.RemoteException
+    {
+        int ret = impl.createDoc(in0, in1);
+        return ret;
+    }
+
+    public kd.cus.wb.Client.DocInfo[] getList(java.lang.String in0, int in1, int in2) throws java.rmi.RemoteException
+    {
+        kd.cus.wb.Client.DocInfo[] ret = impl.getList(in0, in1, in2);
+        return ret;
+    }
+
+    public kd.cus.wb.Client.DocInfo getDoc(int in0, java.lang.String in1) throws java.rmi.RemoteException
+    {
+        kd.cus.wb.Client.DocInfo ret = impl.getDoc(in0, in1);
+        return ret;
+    }
+
+    public int getDocCount(java.lang.String in0) throws java.rmi.RemoteException
+    {
+        int ret = impl.getDocCount(in0);
+        return ret;
+    }
+
+    public java.lang.String login(java.lang.String in0, java.lang.String in1, int in2, java.lang.String in3) throws java.rmi.RemoteException
+    {
+        java.lang.String ret = impl.login(in0, in1, in2, in3);
+        return ret;
+    }
+
+    public int updateDoc(kd.cus.wb.Client.DocInfo in0, java.lang.String in1) throws java.rmi.RemoteException
+    {
+        int ret = impl.updateDoc(in0, in1);
+        return ret;
+    }
+
+}

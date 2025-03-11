@@ -1,0 +1,295 @@
+<button id="save">保存</button>>
+<table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <th align=center style="font-size: 25px;">预期/实际利润计算表</th>
+    </tr>
+</table>
+<table frame=void class="default-table" width="70%" border="1" cellspacing="0" style="font-size: 15px;">
+    <tr>
+        <td valign="top">
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="2">项目基本情况</th>
+                </tr>
+                <tr>
+                    <td>项目名称</td>
+                    <td><%= PROJECT_NAME %></td>
+                </tr>
+                <tr>
+                    <td>项目代码</td>
+                    <td><lable id="projectnum"><%= PROJECT_CODE %></lable></td>
+                </tr>
+                <tr>
+                    <td>项目收入</td>
+                    <td><%= CONTRACT_INCOME %></td>
+                </tr>
+                <tr>
+                    <td>项目已收汇金额</td>
+                    <td><%= CONTRACT_INTHEED %></td>
+                </tr>
+                <tr>
+                    <td>核算期已收汇金额</td>
+                    <td><%= ACCOUNT_INTHEED %></td>
+                </tr>
+                <tr>
+                    <td>项目直接成本</td>
+                    <td><%= CONTRACT_DIRECT_COST %></td>
+                </tr>
+                <tr>
+                    <td>项目间接成本</td>
+                    <td><%= CONTRACT_INDIRECT_COST %></td>
+                </tr>
+                <tr>
+                    <td>现场项目经费</td>
+                    <td><%= PROJECT_FUNDS %></td>
+                </tr>
+                <tr>
+                    <td>预测/实际利润</td>
+                    <td><%= PROFITS %></td>
+                </tr>
+                <tr>
+                    <td>预测/实际利润率</td>
+                    <td><%= PROFITS_MARGIN %></td>
+                </tr>
+            </table>
+        </td>
+        <td valign="top" id="ECONS">
+        </td>
+        <td valign="top" rowspan="4">
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="4">间接成本</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>实际发生</td>
+                    <td>预计发生</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">保险费</td>
+                    <td>信用保险</td>
+                    <td><%= JJ_xybx %></td>
+                    <td><%= YJ_xybx %></td>
+                </tr>
+                <tr>
+                    <td>运输保险</td>
+                    <td><%= JJ_ysbx %></td>
+                    <td><%= YJ_ysbx %></td>
+                </tr>
+                <tr>
+                    <td rowspan="5">运输及保管成本</td>
+                    <td>外运费</td>
+                    <td><%= JJ_yyf %></td>
+                    <td><%= YJ_yyf %></td>
+                </tr>
+                <tr>
+                    <td>内陆运杂费</td>
+                    <td><%= JJ_nlyzf %></td>
+                    <td><%= YJ_nlyzf %></td>
+                </tr>
+                <tr>
+                    <td>包装费</td>
+                    <td><%= JJ_bzf %></td>
+                    <td><%= YJ_bzf %></td>
+                </tr>
+                <tr>
+                    <td>仓储保管费</td>
+                    <td><%= JJ_ccbgf %></td>
+                    <td><%= YJ_ccbgf %></td>
+                </tr>
+                <tr>
+                    <td>军品管理费</td>
+                    <td><%= JJ_jpglf %></td>
+                    <td><%= YJ_jpglf %></td>
+                </tr>
+                <tr>
+                    <td rowspan="8">项目执行费</td>
+                    <td>出国费</td>
+                    <td><%= JJ_cgf %></td>
+                    <td><%= YJ_cgf %></td>
+                </tr>
+                <tr>
+                    <td>接团费</td>
+                    <td><%= JJ_jtf %></td>
+                    <td><%= YJ_jtf %></td>
+                </tr>
+                <tr>
+                    <td>礼品费</td>
+                    <td><%= JJ_ypf %></td>
+                    <td><%= YJ_ypf %></td>
+                </tr>
+                <tr>
+                    <td>业务招待费</td>
+                    <td><%= JJ_ywzdf %></td>
+                    <td><%= YJ_ywzdf %></td>
+                </tr>
+                <tr>
+                    <td>会议费</td>
+                    <td><%= JJ_hyf %></td>
+                    <td><%= YJ_hyf %></td>
+                </tr>
+                <tr>
+                    <td>差旅费</td>
+                    <td><%= JJ_clf %></td>
+                    <td><%= YJ_clf %></td>
+                </tr>
+                <tr>
+                    <td>保函费</td>
+                    <td><%= JJ_bhf %></td>
+                    <td><%= YJ_bhf %></td>
+                </tr>
+                <tr>
+                    <td>培训费</td>
+                    <td><%= JJ_pxf %></td>
+                    <td><%= YJ_pxf %></td>
+                </tr>
+                <tr>
+                    <td rowspan="8">项目执行费</td>
+                    <td>佣金</td>
+                    <td><%= JJ_yj %></td>
+                    <td><%= YJ_yj %></td>
+                </tr>
+                <tr>
+                    <td>银行手续费</td>
+                    <td><%= JJ_yhsxf %></td>
+                    <td><%= YJ_yhsxf %></td>
+                </tr>
+                <tr>
+                    <td>汇兑损益</td>
+                    <td><%= JJ_hdsy %></td>
+                    <td><%= YJ_hdsy %></td>
+                </tr>
+                <tr>
+                    <td>员工出国保险</td>
+                    <td><%= JJ_ygcgbx %></td>
+                    <td><%= YJ_ygcgbx %></td>
+                </tr>
+                <tr>
+                    <td>样品费</td>
+                    <td><%= JJ_ypf %></td>
+                    <td><%= YJ_ypf %></td>
+                </tr>
+                <tr>
+                    <td>劳务费</td>
+                    <td><%= JJ_lwf %></td>
+                    <td><%= YJ_lwf %></td>
+                </tr>
+                <tr>
+                    <td>技术手册及软件制作费</td>
+                    <td><%= JJ_hsscjrjzzf %></td>
+                    <td><%= YJ_hsscjrjzzf %></td>
+                </tr>
+                <tr>
+                    <td>其他</td>
+                    <td><%= JJ_qt %></td>
+                    <td><%= YJ_qt %></td>
+                </tr>
+                <tr>
+                    <td colspan="3">间接成本合计</td>
+                    <td><%=JJ_SUM%></td>
+                </tr>
+                <tr>
+                    <td colspan="3">现场项目经费</td>
+                    <td><%=JJ_xcxmjf%></td>
+                </tr>
+            </table>
+        </td>
+        <td valign="top" rowspan="3">
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="2">项目预估成本</th>
+                </tr>
+                <tr>
+                    <td>直接成本</td>
+                    <td><%=YG_zjcb%></td>
+                </tr>
+                <tr>
+                    <td>海运费</td>
+                    <td><%=YG_hyf%></td>
+                </tr>
+                <tr>
+                    <td>佣金</td>
+                    <td><%=YG_yj%></td>
+                </tr>
+                <tr>
+                    <td>信保费</td>
+                    <td><%=YG_ckbxf%></td>
+                </tr>
+                <tr>
+                    <td>现场费</td>
+                    <td><%=YG_xcf%></td>
+                </tr>
+                <tr>
+                    <td>其他</td>
+                    <td><%=YG_qtfy%></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="3">合同收汇</th>
+                </tr>
+                <tr>
+                    <td>项目</td>
+                    <td>金额</td>
+                    <td>比例</td>
+                </tr>
+                <tr>
+                    <td>合同已收汇金额</td>
+                    <td><%=HT_HTYSH%></td>
+                    <td><%=HT_HTYSH_BL%></td>
+                </tr>
+                <tr>
+                    <td>核算期已收汇金额</td>
+                    <td><%=HT_HSQYSH%></td>
+                    <td><%=HT_HSQYSH_BL%></td>
+                </tr>
+            </table>
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="3">其他</th>
+                </tr>
+                <tr>
+                    <td colspan="2">科技研发支出</td>
+                    <td><%=kjyfzc%></td>
+                </tr>
+                <tr>
+                    <td colspan="2">合同收汇风险</td>
+                    <td><input id="heshfx" type="text"   style="width: 100%; height: 100%; border: 0px; text-align-last: right;" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">大幅降低采购成本（请描述）</td>
+                    <td><input id="dfjdcgcb" type="text"   style="width: 100%; height: 100%; border: 0px; text-align-last: right;" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">合理控制现场费用情况（请描述）</td>
+                    <td><input id="hlkzxcfyqk" type="text"   style="width: 100%; height: 100%; border: 0px; text-align-last: right;" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">出口退税工作完成情况（注1）</td>
+                    <td><input id="cktsgzwcqk" type="text"   style="width: 100%; height: 100%; border: 0px; text-align-last: right;" /></td>
+                </tr>
+            </table>
+            <table frame=void class="default-table" width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th colspan="3">项目财务经理工作成果</th>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="gzcg" style="width: 100%; height: 100%; border: 0px;">123</textarea>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td valign="top" rowspan="3" id="PCONS">
+        </td>
+    </tr>
+</table>
+<h5>注1：请描述是否高质高效完成出口退税工作，是否存在未积极申报出口退税给公司造成损失等情况。</h5>;

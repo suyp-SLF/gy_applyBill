@@ -1,0 +1,19 @@
+/**
+ * SecretsUpdateHttpBindingImpl.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package kd.cus.wb.FWsecrets;
+
+public class SecretsUpdateHttpBindingImpl implements kd.cus.wb.FWsecrets.SecretsUpdatePortType{
+    public java.lang.String getDeptIdByCode(java.lang.String in0) throws java.rmi.RemoteException {
+        return null;
+    }
+
+    public java.lang.String updateSecrets(java.lang.String in0, java.lang.String in1, java.lang.String in2) throws java.rmi.RemoteException {
+        return null;
+    }
+
+}

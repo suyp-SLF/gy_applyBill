@@ -1,0 +1,176 @@
+package kd.cus.wb.ar.applybill;
+
+import java.math.BigDecimal;
+import java.util.EventObject;
+
+import org.apache.commons.lang.StringUtils;
+
+
+import kd.bos.dataentity.entity.DynamicObject;
+import kd.bos.dataentity.entity.DynamicObjectCollection;
+import kd.bos.dataentity.metadata.IDataEntityProperty;
+import kd.bos.entity.datamodel.IDataModel;
+import kd.bos.entity.datamodel.events.ChangeData;
+import kd.bos.entity.datamodel.events.PropertyChangedArgs;
+import kd.bos.form.control.Toolbar;
+import kd.bos.form.control.events.BeforeItemClickEvent;
+import kd.bos.form.control.events.ItemClickEvent;
+import kd.bos.form.plugin.AbstractFormPlugin;
+import kd.bos.orm.query.QCP;
+import kd.bos.orm.query.QFilter;
+import kd.bos.servicehelper.BusinessDataServiceHelper;
+import kd.bos.servicehelper.org.OrgServiceHelper;
+import kd.bos.servicehelper.org.OrgUnitServiceHelper;
+import kd.taxc.tcvat.formplugin.account.AbstractAccountingPlugin;
+
+/**
+ * 开票申请单|万宝表单插件，删行之后重新计算，（单据类型进行默认填入）
+ * @author suyp
+ *
+ */
+public class AppbillFormPlugin extends AbstractFormPlugin {
+
+	private static final String ORG_LOGO = "bos_org";
+	private static final String BOS_BILLTYPE = "bos_billtype";
+	private static final String ENTRY_NAME = "bfgy_entryentity";
+
+//	@Override
+//	public void propertyChanged(PropertyChangedArgs e) {
+//		// TODO Auto-generated method stub
+//		super.propertyChanged(e);
+//		
+//		Object a = this.getModel().getValue("bfgy_billtype");
+//		
+//		DynamicObject org = (DynamicObject) this.getModel().getValue("bfgy_departmentname");
+//		if (null != org) {
+//			org = getOrgInfo(org.get("id"));
+//		}
+//		
+//		if (null != org) {
+//			String bfgy_taxno = org.getString("ftaxregnum");
+//			String bfgy_phone = org.getString("phone");
+//			String bfgy_bankaccount = org.getString("bankaccount") + "(" + org.getString("depositbank")
+//					+ ")";
+//			String bfgy_address = org.getString("contactaddress");
+//			IDataModel b = this.getModel();
+//			this.getModel().setValue("bfgy_taxno", bfgy_taxno);
+//			this.getModel().setValue("bfgy_phone", bfgy_phone);
+//			this.getModel().setValue("bfgy_bankaccount", bfgy_bankaccount);
+//			this.getModel().setValue("bfgy_address", bfgy_address);
+//		}
+//	}
+//
+//	//
+//	@Override
+//	public void afterBindData(EventObject e) {
+//		// TODO Auto-generated method stub
+//		super.afterBindData(e);
+//		DynamicObject org = (DynamicObject) this.getModel().getValue("bfgy_departmentname");
+//		if (null != org) {
+//			org = getOrgInfo(org.getString("id"));
+//		}
+//		
+//		if (null != org) {
+//			String bfgy_taxno = org.getString("ftaxregnum");
+//			String bfgy_phone = org.getString("phone");
+//			String bfgy_bankaccount = org.getString("bankaccount") + "(" + org.getString("depositbank")
+//					+ ")";
+//			String bfgy_address = org.getString("contactaddress");
+//			IDataModel a = this.getModel();
+//			this.getModel().setValue("bfgy_taxno", bfgy_taxno);
+//			this.getModel().setValue("bfgy_phone", bfgy_phone);
+//			this.getModel().setValue("bfgy_bankaccount", bfgy_bankaccount);
+//			this.getModel().setValue("bfgy_address", bfgy_address);
+//		}
+//	}
+
+	/**
+	 * 单据填入默认单据类型
+	 * @param e
+	 */
+	@Override
+	public void afterCreateNewData(EventObject e) {
+		// TODO Auto-generated method stub
+		super.afterCreateNewData(e);
+		QFilter[] qFilters = {new QFilter("number", QCP.equals, "WB_applybill_BT_01")};
+		DynamicObject dy = BusinessDataServiceHelper.loadSingleFromCache(BOS_BILLTYPE, qFilters);
+		this.getModel().setValue("bfgy_billtype", dy);
+
+		QFilter[] qFilters1 = {new QFilter("number",QCP.equals,"8018")};
+		DynamicObject org_dy = BusinessDataServiceHelper.loadSingleFromCache("bos_org", qFilters1);
+
+		this.getModel().setValue("bfgy_departmentname", org_dy);
+	}
+
+//	private DynamicObject getOrgInfo(Object id) {
+//		if (null != id) {
+//			QFilter[] qFilters = { new QFilter("id", QCP.equals, id) };
+//			try {
+//				DynamicObject org_dy = BusinessDataServiceHelper.loadSingle(ORG_LOGO,
+//						"id,ftaxregnum,phone,depositbank,bankaccount,contactaddress", qFilters);
+//				return org_dy;
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//
+//			}
+//		}
+//		return null;
+//	}
+
+	/**
+	 * 删行进行计算
+	 * @param e
+	 */
+
+	@Override
+	public void propertyChanged(PropertyChangedArgs e) {
+		// TODO Auto-generated method stub
+		super.propertyChanged(e);
+		ChangeData[] a = e.getChangeSet();
+		IDataEntityProperty b = e.getProperty();
+		if ("bfgy_leviedtotal".equals(b.getName())) {
+			BigDecimal sumAmount = new BigDecimal(0);
+			DynamicObjectCollection entry = this.getModel().getEntryEntity(ENTRY_NAME);
+			for (DynamicObject dy : entry) {
+				if (null != dy) {
+					sumAmount = sumAmount.add(dy.getBigDecimal("bfgy_leviedtotal"));
+				}
+			}
+			this.getModel().setValue("bfgy_taxmoneysum_pri", sumAmount);
+		}
+	}
+
+	/**
+	 * 监听插件
+	 * @param e
+	 */
+	@Override
+	public void registerListener(EventObject e) {
+		// TODO Auto-generated method stub
+		super.registerListener(e);
+		Toolbar repairDataBtnBar = this.getControl("bfgy_advcontoolbarap");
+		repairDataBtnBar.addItemClickListener(this);
+	}
+
+	/**
+	 * 点击事件
+	 * @param evt
+	 */
+	@Override
+	public void itemClick(ItemClickEvent evt) {
+		// TODO Auto-generated method stub
+		super.itemClick(evt);
+		if ("deleteentry".equals(evt.getOperationKey())) {
+			BigDecimal sumAmount = new BigDecimal(0);
+			DynamicObjectCollection entry = this.getModel().getEntryEntity(ENTRY_NAME);
+			for (DynamicObject dy : entry) {
+				if (null != dy) {
+					sumAmount = sumAmount.add(dy.getBigDecimal("bfgy_leviedtotal"));
+				}
+			}
+			this.getModel().setValue("bfgy_taxmoneysum_pri", sumAmount);
+		}
+	}
+	
+}
